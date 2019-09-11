@@ -1,8 +1,8 @@
 import React from 'react';
-import WelcomeMessage from './WelcomeMessage';
 import AppLayout from './AppLayout';
 import { AppProvider } from './AppProvider';
 import AppBar from './AppBar';
+import Settings from '../settings/index';
 import './App.css';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <AppLayout>
       <AppProvider>
         <AppBar />
-        <WelcomeMessage />
+        <Settings />
       </AppProvider>
     </AppLayout>
   );
