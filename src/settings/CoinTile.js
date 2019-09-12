@@ -4,17 +4,31 @@ import { SelectableTile, DisabledTile, DeletableTile } from '../shared/Tile';
 import CoinHeaderGrid from './CoinHeaderGrid';
 import CoinImage from '../shared/CoinImage';
 
+function clickCoinHandler(topSection, coinKey, addCoin, removeCoin) {
+  return topSection
+    ? () => {
+        removeCoin(coinKey);
+      }
+    : () => {
+        addCoin(coinKey);
+      };
+}
+
 export default function({ coinkey, topSection }) {
   return (
     <AppContext.Consumer>
-      {({ coinlist }) => {
+      {({ coinlist, addCoin, removeCoin, isInFavorites }) => {
         let coin = coinlist[coinkey];
         let TileClass = SelectableTile;
         if (topSection) {
           TileClass = DeletableTile;
+        } else if (isInFavorites(coinkey)) {
+          TileClass = DisabledTile;
         }
         return (
-          <TileClass>
+          <TileClass
+            onClick={clickCoinHandler(topSection, coinkey, addCoin, removeCoin)}
+          >
             <CoinHeaderGrid
               name={coin.Name}
               symbol={coin.Symbol}
