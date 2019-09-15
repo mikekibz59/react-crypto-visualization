@@ -4,6 +4,9 @@ import { SelectableTile, DisabledTile, DeletableTile } from '../shared/Tile';
 import CoinHeaderGrid from './CoinHeaderGrid';
 import CoinImage from '../shared/CoinImage';
 
+//This is a component for the specific coin tile
+
+// returns back the topsection with the added or removed keys
 function clickCoinHandler(topSection, coinKey, addCoin, removeCoin) {
   return topSection
     ? () => {
@@ -20,6 +23,10 @@ export default function({ coinkey, topSection }) {
       {({ coinlist, addCoin, removeCoin, isInFavorites }) => {
         let coin = coinlist[coinkey];
         let TileClass = SelectableTile;
+        //checks to see to the topsection if there and renders
+        //the DeletableTile
+        //And also checks the other coins and determine whether
+        //it is in the favorites already and disables click events
         if (topSection) {
           TileClass = DeletableTile;
         } else if (isInFavorites(coinkey)) {
