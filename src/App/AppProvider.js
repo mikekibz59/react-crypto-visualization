@@ -21,6 +21,7 @@ export class AppProvider extends Component {
     };
   }
 
+  //a function to fetch all coins
   componentDidMount() {
     this.fetchCoins();
   }
