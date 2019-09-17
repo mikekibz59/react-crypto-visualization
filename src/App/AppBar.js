@@ -19,10 +19,14 @@ const ControlButtonElem = styled.div`
     `}
 `;
 
+//function used to Capitalize the page name
 function toProperCase(lower) {
   return lower.charAt(0).toUpperCase() + lower.substr(1);
 }
 
+//used to set the page on which you are currently working on
+// the active attribute/prop is used to add somestyling
+//to show the user which page he/she is currently on
 function ControlButton({ name, active }) {
   return (
     <AppContext.Consumer>

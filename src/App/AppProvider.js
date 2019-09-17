@@ -17,7 +17,8 @@ export class AppProvider extends Component {
       addCoin: this.addCoin,
       isInFavorites: this.isInFavorites,
       removeCoin: this.removeCoin,
-      confirmFavorites: this.confirmFavorites
+      confirmFavorites: this.confirmFavorites,
+      setFilteredCoins: this.setFilteredCoins
     };
   }
 
@@ -49,6 +50,8 @@ export class AppProvider extends Component {
   isInFavorites = key => _.includes(this.state.favorites, key);
 
   setPage = page => this.setState({ page });
+
+  setFilteredCoins = filteredCoins => this.setState({ filteredCoins });
 
   savedSettings() {
     let cryptoData = JSON.parse(localStorage.getItem('cryptoDash'));
