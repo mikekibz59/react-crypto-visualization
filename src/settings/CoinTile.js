@@ -37,7 +37,7 @@ export default function({ coinkey, topSection }) {
             onClick={clickCoinHandler(topSection, coinkey, addCoin, removeCoin)}
           >
             <CoinHeaderGrid
-              name={coin.Name}
+              name={coin.CoinName}
               symbol={coin.Symbol}
               topSection={topSection}
             ></CoinHeaderGrid>
