@@ -2,9 +2,8 @@ import React from 'react';
 import AppLayout from './AppLayout';
 import { AppProvider } from './AppProvider';
 import AppBar from './AppBar';
-import Settings from '../settings';
+import Settings from '../settings/index';
 import Content from '../shared/Content';
-import Dashboard from '../Dashboard';
 import './App.css';
 
 function App() {
@@ -14,7 +13,6 @@ function App() {
         <AppBar />
         <Content>
           <Settings />
-          <Dashboard />
         </Content>
       </AppProvider>
     </AppLayout>
