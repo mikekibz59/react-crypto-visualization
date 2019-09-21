@@ -1,12 +1,16 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { SelectableTile } from '../shared/Tile';
+import { SelectableTile, DisabledTile, DeletableTile } from '../shared/Tile';
 import { fontSize3, fontSizeBig, greenBoxShadow } from '../shared/styles';
 import { CoinHeaderGridStyled } from '../settings/CoinHeaderGrid';
 import { AppContext } from '../App/AppProvider';
 
 const JustifyRight = styled.div`
 	justify-self: right;
+`;
+
+const JustifyLeft = styled.div`
+	justify-self: left'
 `;
 
 const TickerPrice = styled.div`
