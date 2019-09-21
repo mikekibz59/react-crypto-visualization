@@ -22,7 +22,7 @@ export class AppProvider extends Component {
     };
   }
 
-  //a function to fetch all coins
+  //a function to fetch all coins and prices
   componentDidMount() {
     this.fetchCoins();
     this.fetchPrices();

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { DeletableTile } from '../shared/Tile';
+import { symbols } from 'ansi-colors';
 
 //This is a component for the header section for
 //CoinTile component
@@ -12,6 +13,11 @@ export const CoinHeaderGridStyled = styled.div`
 
 export const CoinSymbol = styled.div`
   justify-self: right;
+`;
+
+const CoinName = styled.div`
+  font-size: 12px;
+  margin-right: 1px;
 `;
 
 const DeleteIcon = styled.div`
@@ -28,7 +34,7 @@ const DeleteIcon = styled.div`
 export default function({ name, symbol, topSection }) {
   return (
     <CoinHeaderGridStyled>
-      <div>{name}</div>
+      <CoinName>{name.length < 10 ? name : symbol}</CoinName>
       {topSection ? (
         <DeleteIcon> X </DeleteIcon>
       ) : (
