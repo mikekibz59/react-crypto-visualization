@@ -1,15 +1,17 @@
 import highChartsConfig from './HighChartsConfig';
 import React from 'react';
+import ReactHighCharts from 'react-highcharts';
 import { Tile } from '../shared/Tile';
 import { AppContext } from '../App/AppProvider';
-import ReactHighCharts from 'react-highcharts';
+import { theme } from './HighChartsTheme';
+
+ReactHighCharts.Highcharts.setOptions(theme);
 
 export default function() {
 	return (
 		<AppContext.Consumer>
 			{(props) => (
 				<Tile>
-					{console.log(highChartsConfig())}
 					<ReactHighCharts config={highChartsConfig()} />
 				</Tile>
 			)}
