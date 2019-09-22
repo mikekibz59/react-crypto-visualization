@@ -9,7 +9,7 @@ const PriceGrid = styled.div`
 	grid-gap: 15px;
 	margin-top: 40px;
 `;
-
+//write a way to handle it
 export default function() {
 	return (
 		<AppContext.Consumer>
