@@ -8,17 +8,17 @@ import Dashboard from '../Dashboard';
 import './App.css';
 
 function App() {
-  return (
-    <AppLayout>
-      <AppProvider>
-        <AppBar />
-        <Content>
-          <Settings />
-          <Dashboard />
-        </Content>
-      </AppProvider>
-    </AppLayout>
-  );
+	return (
+		<AppLayout>
+			<AppProvider>
+				<AppBar />
+				<Content>
+					<Settings />
+					<Dashboard />
+				</Content>
+			</AppProvider>
+		</AppLayout>
+	);
 }
 
 export default App;
