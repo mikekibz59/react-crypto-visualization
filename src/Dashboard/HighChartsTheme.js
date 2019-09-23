@@ -1,3 +1,4 @@
+import {lightTheme} from '../shared/styles'
 export const theme = {
 	colors: [
 		'#61d936',
