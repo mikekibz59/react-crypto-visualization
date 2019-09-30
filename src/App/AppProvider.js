@@ -3,6 +3,7 @@ import _ from 'lodash';
 import moment from 'moment';
 
 const cc = require('cryptocompare');
+cc.setApiKey(process.env.REACT_APP_CC_API);
 
 export const AppContext = React.createContext();
 
