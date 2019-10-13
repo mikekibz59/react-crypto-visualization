@@ -38,7 +38,6 @@ export class AppProvider extends Component {
 
 	fetchCoins = async () => {
 		let coinlist = (await cc.coinList()).Data;
-		console.log('coinList:', coinlist);
 		this.setState({ coinlist });
 	};
 
@@ -84,14 +83,14 @@ export class AppProvider extends Component {
 		}
 
 		let { favorites, currentFavorite } = cryptoData;
-		console.log('currentFavorite', currentFavorite);
+
 		return { favorites, currentFavorite };
 	}
 
 	fetchPrices = async () => {
 		if (this.state.firstVisit) return;
 		let prices = await this.prices();
-		console.log('prices', prices);
+
 		prices = prices.filter((price) => Object.keys(price).length);
 		this.setState({ prices });
 	};
@@ -167,7 +166,6 @@ export class AppProvider extends Component {
 	};
 
 	changeChartSelect = (value) => {
-		console.log(value);
 		this.setState({ timeInterval: value, historical: null }, () => {
 			this.fetchHistorical();
 		});
