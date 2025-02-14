@@ -9,16 +9,16 @@ const PriceGrid = styled.div`
 	grid-gap: 15px;
 	margin-top: 40px;
 `;
-//write a way to handle it
+
 export default function() {
 	return (
 		<AppContext.Consumer>
 			{({ prices }) => (
 				<PriceGrid>
-					{prices.map((price, index) => (
-						<PriceTile key={`price-key${index}`} price={price} index={index}>
+					{Object.keys(prices).map((priceKey, index) => (
+						<PriceTile key={`price-key${index}`} price={prices[priceKey]} index={index}>
 							{' '}
-							{Object.keys(price)[0]}
+							{priceKey}
 						</PriceTile>
 					))}
 				</PriceGrid>

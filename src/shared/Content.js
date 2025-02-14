@@ -9,7 +9,7 @@ const LoadingPosition = styled.div`
 	text-transform: capitalize;
 `;
 
-export default function(props) {
+export default function(props) { // this code need refactoring for logic flow. User journey is very confusing here.
 	return (
 		<AppContext.Consumer>
 			{({ coinlist, prices, firstVisit }) => {

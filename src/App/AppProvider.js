@@ -89,43 +89,43 @@ export class AppProvider extends Component {
 
 	fetchPrices = async () => {
 		if (this.state.firstVisit) return;
-		let prices = await this.prices();
-
-		prices = prices.filter((price) => Object.keys(price).length);
+		const prices = await this.prices();
 		this.setState({ prices });
 	};
 
 	fetchHistorical = async () => {
 		if (this.state.firstVisit) return;
-		let results = await this.historical();
-		let historical = [
-			{
-				name: this.state.currentFavorite,
-				data: results.map((ticker, index) => [
-					moment()
-						.subtract({ [this.state.timeInterval]: TIME_UNITS - index })
-						.valueOf(),
-					ticker.USD,
-				]),
-			},
-		];
-		this.setState({ historical });
+		try {
+			let results = await this.historical();
+			let historical = [
+				{
+					name: this.state.currentFavorite,
+					data: results.map((ticker, index) => [
+						moment()
+							.subtract({ [this.state.timeInterval]: TIME_UNITS - index })
+							.valueOf(),
+						ticker.USD,
+					]),
+				},
+			];
+			this.setState({ historical });
+		} catch (e) {
+			console.error('Error fetching', e);
+		}
 	};
 
 	prices = async () => {
 		let returnData = [];
-		for (let i = 0; i < this.state.favorites.length; i++) {
-			try {
-				let priceData = await cc.priceFull(this.state.favorites[i], 'USD');
-				returnData.push(priceData);
-			} catch (e) {
-				console.warn('fetch price error: ', e);
-			}
+
+		try {
+			returnData = await cc.priceFull(this.state.favorites, ['USD']);
+		} catch (e) {
+			console.error('Fetch Price error: ', e);
 		}
 		return returnData;
 	};
 
-	historical = () => {
+	historical = async () => {
 		let promises = [];
 		for (let units = TIME_UNITS; units > 0; units--) {
 			promises.push(

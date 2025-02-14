@@ -26,8 +26,8 @@ const Emptydiv = styled.div`
 	margin-top: 40px;
 `;
 
-function checkVisitor(firstvisit) {
-	if (firstvisit === false) {
+function checkVisitor(firstVisit, page ) {
+	if (!firstVisit) {
 		return (
 			<Page name='dashboard'>
 				<PriceGrid />
@@ -37,7 +37,7 @@ function checkVisitor(firstvisit) {
 				</ChartGrid>
 			</Page>
 		);
-	} else {
+	} else if (firstVisit && page === 'dashboard') {
 		return (
 			<Emptydiv svgImg>
 				{' '}
@@ -51,7 +51,7 @@ function checkVisitor(firstvisit) {
 export default function() {
 	return (
 		<AppContext.Consumer>
-			{({ firstVisit }) => checkVisitor(firstVisit)}
+			{({ firstVisit, page }) => checkVisitor(firstVisit, page)}
 		</AppContext.Consumer>
 	);
 }

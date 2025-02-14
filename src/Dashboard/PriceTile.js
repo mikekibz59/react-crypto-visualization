@@ -1,3 +1,5 @@
+/** @format */
+
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { SelectableTile } from '../shared/Tile';
@@ -54,6 +56,7 @@ function ChangePercent({ data }) {
 }
 
 function PriceTile({ sym, data, currentFavorite, setCurrentFavorite }) {
+	debugger;
 	return (
 		<PriceTileStyled
 			onClick={setCurrentFavorite}
@@ -68,6 +71,7 @@ function PriceTile({ sym, data, currentFavorite, setCurrentFavorite }) {
 }
 
 function PriceTileCompact({ sym, data, currentFavorite, setCurrentFavorite }) {
+	debugger;
 	return (
 		<PriceTileStyled
 			onClick={setCurrentFavorite}
@@ -80,21 +84,22 @@ function PriceTileCompact({ sym, data, currentFavorite, setCurrentFavorite }) {
 	);
 }
 
-export default function({ price, index }) {
-	let sym = Object.keys(price)[0];
-	let data = price[sym]['USD'];
+export default function ({ price, index }) {
+	let data = price['USD'];
+	let sym = data['FROMSYMBOL'];
 	let TileClass = index < 5 ? PriceTile : PriceTileCompact;
 
 	return (
 		<AppContext.Consumer>
-			{({ currentFavorite, setCurrentFavorite }) => (
+			{({ currentFavorite, setCurrentFavorite }) => {
+				{console.log('data', data)}
 				<TileClass
 					sym={sym}
 					data={data}
 					currentFavorite={currentFavorite === sym}
 					setCurrentFavorite={() => setCurrentFavorite(sym)}
 				/>
-			)}
+			}}
 		</AppContext.Consumer>
 	);
 }

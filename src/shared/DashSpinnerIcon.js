@@ -8,7 +8,7 @@ export default () => {
 			xmlns='http://www.w3.org/2000/svg'
 			viewBox='0 0 100 100'
 			preserveAspectRatio='xMidYMid'
-			class='lds-cube'
+			className='lds-cube'
 			style={{ background: 'none' }}>
 			<g transform='translate(25,25)'>
 				<rect
