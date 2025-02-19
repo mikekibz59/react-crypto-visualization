@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {initialCoinState, CoinListResponse} from './../../types/coins'
+import {initialCoinState, CoinResponse} from './../../types/coins'
+import { fetchCoinsList } from '../thunks/coin_thunks';
 
 const initialState: initialCoinState = {
 	favourites: ['BTC', 'ETH', 'XMR', 'DOGE'],
 	timeInterval: 'months',
-	coinList: [],
+	coinDetails: {data: [], loading: false, error: null },
 	currentFavourite: null,
 	historical: null,
 	prices: null,
@@ -14,9 +15,6 @@ const coinSlice = createSlice({
 	name: 'coins',
 	initialState,
 	reducers: {
-		setCoinList(state, action: PayloadAction<CoinListResponse[]>) {
-			state.coinList = action.payload;
-		},
 		addFavourites(state, action: PayloadAction<string>) {
 			if (!state.favourites.includes(action.payload)) {
 				state.favourites.push(action.payload);
@@ -29,10 +27,21 @@ const coinSlice = createSlice({
             state.currentFavourite = action.payload;
         }
 	},
+	extraReducers: builder => {
+		builder.addCase(fetchCoinsList.pending, (state)=>{
+			state.coinDetails.loading = true;
+			state.coinDetails.error = null;
+		}).addCase(fetchCoinsList.fulfilled, (state, action)=>{
+			state.coinDetails.loading = false;
+			state.coinDetails.data = action.payload;
+		}).addCase(fetchCoinsList.rejected, (state, action)=> {
+			state.coinDetails.loading = false;
+			state.coinDetails.error = action.payload;
+		})
+	}
 });
 
 export const {
-    setCoinList,
     addFavourites,
     removeFavourite,
     setCurrentFavourite,

@@ -1,0 +1,1 @@
+export const FETCH_COINS_LIST = 'coins/fetchCoinsList' as const;
