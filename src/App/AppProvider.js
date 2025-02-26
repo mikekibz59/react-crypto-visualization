@@ -97,6 +97,7 @@ export class AppProvider extends Component {
 		if (this.state.firstVisit) return;
 		try {
 			let results = await this.historical();
+			console.log('historical', results);
 			let historical = [
 				{
 					name: this.state.currentFavorite,
