@@ -7,8 +7,8 @@ const initialState: CoinsState = {
 	timeInterval: 'months',
 	coinDetails: { data: [], loading: false, error: null },
 	currentFavourite: null,
-	historical: {data: [], loading: false, error: null},
-	prices: {data: {}, loading: false, error: null},
+	historical: { data: [], loading: false, error: null },
+	prices: { data: {}, loading: false, error: null },
 };
 
 const coinSlice = createSlice({
